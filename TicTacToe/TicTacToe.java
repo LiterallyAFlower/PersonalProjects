@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class TicTacToe {
     
     
-        public static void main(String[] args) {
+        public void run() {
             Scanner in = new Scanner(System.in);
             board b = new board();
             board.turn = "X";
@@ -20,7 +20,7 @@ public class TicTacToe {
             while(winner==null) 
             {
                 int input;
-    
+                
                 //number 1-9
                 try {
                     input = in.nextInt();
@@ -47,10 +47,20 @@ public class TicTacToe {
         }
 
         if(winner.equalsIgnoreCase("draw")){
-            System.out.println("It's a draw! Thanks for playing.");
+            System.out.println("It's a draw! To play again, enter 1! To quit, put 2.");
         } else {
-            System.out.println("Congratulations! "+winner+"'s have won! Thanks for playing.");
+            System.out.println("Congratulations! "+winner+"'s have won! To play again, enter 1! To quit, put 2.");
         }
-        in.close();
+        int input = in.nextInt();
+        if(input == 1){
+            run();
+        } else {
+            in.close();
+        }
+        
+    }
+    public static void main(String[] args) {
+        TicTacToe game = new TicTacToe();
+        game.run();
     }
 }
